@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CalculatorMan</string>
+    <string name="title_activity_calculation">CalculationActivity</string>
+    <string name="enter_numbers_to_calculate">Enter Numbers to Calculate</string>
+    <string name="e_g_10">e.g.10</string>
+    <string name="e_g_20">e.g.20</string>
+    <string name="addition">+</string>
+    <string name="subtract">-</string>
+    <string name="result">Result</string>
+</resources>

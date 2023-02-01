@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.example.calculatorman.view.calculation.CalculationActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.example.calculatorman.view.calculation.CalculationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.calculation.CalculationActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/enter_numbers_to_calculate"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/number1"
+            style="@style/CalculationEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/e_g_10"
+            android:imeOptions="actionNext"
+            android:text="@={viewModel.number1}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/number2"
+            app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="12423455.00" />
+
+        <EditText
+            android:id="@+id/number2"
+            style="@style/CalculationEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint="@string/e_g_20"
+            android:imeOptions="actionDone"
+            android:text="@={viewModel.number2}"
+            app:layout_constraintBottom_toBottomOf="@+id/number1"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+            app:layout_constraintStart_toEndOf="@+id/number1"
+            app:layout_constraintTop_toTopOf="@+id/number1"
+            tools:text="12423455.00" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addition"
+            style="@style/CalculationButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/purple_200"
+            android:onClick="@{() -> viewModel.performAddition()}"
+            android:text="@string/addition"
+            app:layout_constraintEnd_toStartOf="@+id/subtract"
+            app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/number1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subtract"
+            style="@style/CalculationButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/orange_200"
+            android:onClick="@{() -> viewModel.performSubtraction()}"
+            android:text="@string/subtract"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+            app:layout_constraintStart_toEndOf="@+id/addition"
+            app:layout_constraintTop_toTopOf="@+id/addition" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
